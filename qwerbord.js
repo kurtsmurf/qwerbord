@@ -6,6 +6,8 @@ to do:
 -- Make it possible to detune rows up/down by half steps
 -- Make a just intonation option
 -- Add support for non-English keyboards
+-- Add visual keyboard
+-- Make keys change color while pressed
 
 */
 
@@ -15,8 +17,8 @@ function setup() {
   inactiveVoices = [];
   for (i=0;i<12;i++) {
     inactiveVoices.push(new p5.Oscillator)
-    inactiveVoices[i].start();
     inactiveVoices[i].amp(0);
+    inactiveVoices[i].start();
     inactiveVoices[i].setType('sawtooth');
   }
 
@@ -41,18 +43,25 @@ function setup() {
 
   // Generate visual keyboard
   keyBoard.forEach(function(row, rowNum) {
-    // create list element
     var ul = document.createElement("ul");
+    ul.classList.add("row");
+    ul.id = 'row-' + rowNum;
     row.forEach(function(keyCode) {
       var li = document.createElement("li");
+      var label = document.createElement("div");
       var text = document.createTextNode(String.fromCharCode(keyCode));
-      li.appendChild(text);
       ul.appendChild(li);
+      li.classList.add("key");
+      li.id = keyCode;
+      li.appendChild(label);
+      label.appendChild(text);
+      label.classList.add("letter");
     });
-    var list = document.getElementById("qwerbord");    // Get the <ul> element to insert a new node
-    list.insertBefore(newItem, list.childNodes[0]);  // Insert <li> before the first child of <ul>
-
+    var bord = document.getElementById("qwerbord");
+    bord.insertBefore(ul, bord.childNodes[0]);
   });
+
+  
 
   // Set the interval between rows
   rowOffset = 3;
