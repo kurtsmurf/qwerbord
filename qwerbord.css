@@ -49,6 +49,8 @@
 }
 
 #qwerbord {
+    display: block;
+    margin: auto;
     width: 100%;
     max-width: 800px;
 }
@@ -59,3 +61,30 @@
     margin-top: .5em;
     margin-bottom: .5em;
 }
+
+body {
+    background-color: bisque;
+}
+
+/* not ready yet */
+.colorFLux {
+    animation: colorchange .5s infinite; /* animation-name followed by duration in seconds*/
+       /* you could also use milliseconds (ms) or something like 2.5s */
+    -webkit-animation: colorchange .5s infinite; /* Chrome and Safari */
+  }
+
+  @keyframes colorchange
+  {
+    0%   {background: red;}
+    33%  {background: yellow;}
+    66%  {background: blue;}
+    100% {background: red;}
+  }
+
+  @-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */
+  {
+    0%   {background: red;}
+    33%  {background: yellow;}
+    66%  {background: blue;}
+    100% {background: red;}
+  }

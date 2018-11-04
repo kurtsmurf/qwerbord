@@ -3,6 +3,7 @@ Qwerbord is a keyboard for musical typing built with p5.js
 
 to do:
 
+-- Fix special characters (displaying incorrectly)
 -- Make it possible to detune rows up/down by half steps
 -- Make a just intonation option
 -- Add support for non-English keyboards
@@ -72,6 +73,7 @@ function keyPressed() {
     if (row.includes(keyCode)) {
       note = notes[row.indexOf(keyCode) + rowOffset * rowNum];
       playNote(keyCode, note);
+      setColor(keyCode, 'crimson');
     }
   });
 }
@@ -87,11 +89,16 @@ function playNote(keyCode, note) {
   console.log(note);
 }
 
+function setColor(keyCode, color) {
+  document.getElementById(keyCode).style.backgroundColor = color;
+}
+
 function keyReleased() {
   if (activeVoices.has(keyCode)) {
     osc = activeVoices.get(keyCode);
     osc.amp(0, .01);
     inactiveVoices.push(osc);
     activeVoices.delete(keyCode);
+    setColor(keyCode, 'salmon')
   }
 }
