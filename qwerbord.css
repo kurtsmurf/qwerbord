@@ -50,4 +50,12 @@
 
 #qwerbord {
     width: 100%;
+    max-width: 800px;
+}
+
+#title {
+    text-align: center;
+    color: rgb(58, 58, 58);
+    margin-top: .5em;
+    margin-bottom: .5em;
 }
