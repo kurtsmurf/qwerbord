@@ -1,8 +1,12 @@
 /*
-This Qwerbord --
-TODO: Make it possible to 'tune' row by shifting the starting note up/down by
-half steps
-TODO: Just intonation option
+Qwerbord is a keyboard for musical typing built with p5.js
+
+to do:
+
+-- Make it possible to detune rows up/down by half steps
+-- Make a just intonation option
+-- Add support for non-English keyboards
+
 */
 
 function setup() {
@@ -16,7 +20,7 @@ function setup() {
     inactiveVoices[i].setType('sawtooth');
   }
 
-  // Create an empty Map object to store active voices as keyCode/oscillator
+  // Create an empty Map object to store active voices as keyCode/Oscillator
   // pairs
   activeVoices = new Map();
 
@@ -35,6 +39,21 @@ function setup() {
   firstRow = [90,88,67,86,66,78,77,188,190,191];
   keyBoard = [firstRow, secondRow, thirdRow, fourthRow];
 
+  // Generate visual keyboard
+  keyBoard.forEach(function(row, rowNum) {
+    // create list element
+    var ul = document.createElement("ul");
+    row.forEach(function(keyCode) {
+      var li = document.createElement("li");
+      var text = document.createTextNode(String.fromCharCode(keyCode));
+      li.appendChild(text);
+      ul.appendChild(li);
+    });
+    var list = document.getElementById("qwerbord");    // Get the <ul> element to insert a new node
+    list.insertBefore(newItem, list.childNodes[0]);  // Insert <li> before the first child of <ul>
+
+  });
+
   // Set the interval between rows
   rowOffset = 3;
 }
@@ -50,7 +69,6 @@ function keyPressed() {
 
 function playNote(keyCode, note) {
   osc = inactiveVoices.pop();
-  // If no oscillators are available, do nothing
   if (!osc) {
     return;
   }
