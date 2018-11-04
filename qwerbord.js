@@ -73,7 +73,7 @@ function keyPressed() {
     if (row.includes(keyCode)) {
       note = notes[row.indexOf(keyCode) + rowOffset * rowNum];
       playNote(keyCode, note);
-      setColor(keyCode, 'crimson');
+      setColor(keyCode, 'indianred');
     }
   });
 }
