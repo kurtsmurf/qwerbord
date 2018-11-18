@@ -3,24 +3,28 @@ Qwerbord is a keyboard for musical typing built with p5.js
 
 to do:
 
+-- Fix keys stuck on issue (if keycode in active on key down, remove?)
 -- Fix special characters (displaying incorrectly)
 -- Make it possible to detune rows up/down by half steps
 -- Make a just intonation option
 -- Add support for non-English keyboards
--- Add visual keyboard
--- Make keys change color while pressed
+-- Make mono-synth with glide option?
+-- Make sampler option (upload audio file)
 
 */
 
 function setup() {
-
-  // Create an array of 12 oscillators
+  compressor = new p5.Compressor();
+  compressor.threshold(-50);
+  // Create an array of oscillators
   inactiveVoices = [];
-  for (i=0;i<12;i++) {
+  for (i=0;i<8;i++) {
     inactiveVoices.push(new p5.Oscillator)
     inactiveVoices[i].amp(0);
     inactiveVoices[i].start();
     inactiveVoices[i].setType('sawtooth');
+    inactiveVoices[i].disconnect();
+    inactiveVoices[i].connect(compressor);
   }
 
   // Create an empty Map object to store active voices as keyCode/Oscillator
@@ -61,8 +65,6 @@ function setup() {
     var bord = document.getElementById("qwerbord");
     bord.insertBefore(ul, bord.childNodes[0]);
   });
-
-  
 
   // Set the interval between rows
   rowOffset = 3;
