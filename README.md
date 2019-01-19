@@ -1,6 +1,6 @@
 # qwerbord README #
 
-Qwerbord is a musical typing implementation built with p5.js
+Qwerbord is an instrument for musical typing built with p5.js
 
 ## known issues ##
 
