@@ -13,9 +13,7 @@ to do:
 
 */
 
-function setup() {
-  compressor = new p5.Compressor();
-  compressor.threshold(-50);
+startVoices = function() {
   // Create an array of oscillators
   inactiveVoices = [];
   for (i=0;i<8;i++) {
@@ -26,13 +24,22 @@ function setup() {
     inactiveVoices[i].disconnect();
     inactiveVoices[i].connect(compressor);
   }
+}
+
+function setup() {
+  compressor = new p5.Compressor();
+  compressor.threshold(-50);
+  document.querySelector('button').onclick = function() {
+    startVoices()
+    document.querySelector('button').style.display = 'none'
+  }
 
   // Create an empty Map object to store active voices as keyCode/Oscillator
   // pairs
   activeVoices = new Map();
 
-  // Create an array of 21 frequencies one half step apart starting at 200 hz
-  notes = [200];
+  // Create an array of 21 frequencies one half step apart starting at 220 hz
+  notes = [220];
   for (i=0;i<21;i++) {
     notes.push(notes[i] * Math.pow(2, 1/12));
   }

@@ -2,6 +2,30 @@
     --key-width: 7%; 
 }
 
+#start-button-container {
+    text-align: center;
+}
+
+#start-button {
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    padding: .75rem;
+    margin-bottom: 1rem;
+    background: orange;
+    color: white;
+    animation-name: hey-there;
+    animation-duration: .5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    cursor: pointer;
+}
+
+@keyframes hey-there {
+  from {padding: .75rem}
+  to {padding: .80rem}
+}
+
 .key {
     border-radius: 5px;
     padding: 0;
