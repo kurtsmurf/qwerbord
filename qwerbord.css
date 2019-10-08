@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Fredoka+One&display=swap');
+
 :root {
     --key-width: 7%; 
 }
@@ -19,6 +21,7 @@
     animation-iteration-count: infinite;
     animation-direction: alternate;
     cursor: pointer;
+    font-size: 1.1rem;
 }
 
 @keyframes hey-there {
@@ -44,7 +47,7 @@
     bottom: 0;
     right: 0;
     text-align: center;
-    font-size: 1em;
+    font-size: 1.2em;
     color: white;
  } 
 
@@ -80,6 +83,7 @@
 }
 
 #title {
+    font-family: 'Fredoka One';
     text-align: center;
     color: rgb(58, 58, 58);
     margin-top: .5em;
@@ -88,27 +92,5 @@
 
 body {
     background-color: bisque;
+    font-family: 'Open Sans'
 }
-
-/* not ready yet */
-.colorFLux {
-    animation: colorchange .5s infinite; /* animation-name followed by duration in seconds*/
-       /* you could also use milliseconds (ms) or something like 2.5s */
-    -webkit-animation: colorchange .5s infinite; /* Chrome and Safari */
-  }
-
-  @keyframes colorchange
-  {
-    0%   {background: red;}
-    33%  {background: yellow;}
-    66%  {background: blue;}
-    100% {background: red;}
-  }
-
-  @-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */
-  {
-    0%   {background: red;}
-    33%  {background: yellow;}
-    66%  {background: blue;}
-    100% {background: red;}
-  }
